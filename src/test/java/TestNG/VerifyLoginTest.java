@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,7 +17,13 @@ public class VerifyLoginTest {
   @BeforeMethod
   public void launch(){
 	  	  System.setProperty("webdriver.chrome.driver", "chromedriver");
-		driver = new ChromeDriver();
+		//driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-sandbox"); //Bypass OS security model   
+		options.addArguments("--start-maximized");
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--headless");
+		driver = new ChromeDriver(options);
 		driver.get("http://localhost:3001");
 		driver.manage().window().maximize();
   }
