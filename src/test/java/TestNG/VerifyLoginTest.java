@@ -3,6 +3,7 @@ package TestNG;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -10,12 +11,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class VerifyLoginTest {
-  FirefoxDriver driver;
+  ChromeDriver driver;
   
   @BeforeMethod
   public void launch(){
-	  	  System.setProperty("webdriver.gecko.driver", "geckodriver");
-		driver = new FirefoxDriver();
+	  	  System.setProperty("webdriver.chrome.driver", "chromedriver");
+		driver = new ChromeDriver();
 		driver.get("http://localhost:3001");
 		driver.manage().window().maximize();
   }
